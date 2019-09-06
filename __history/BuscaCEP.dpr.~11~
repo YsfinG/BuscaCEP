@@ -1,0 +1,21 @@
+program BuscaCEP;
+
+uses
+  Vcl.Forms,
+  View.Cliente in 'view\View.Cliente.pas' {ClienteView},
+  Util.Telephone in 'util\Util.Telephone.pas',
+  Util.ViaCEP in 'util\Util.ViaCEP.pas',
+  Util.XML in 'util\Util.XML.pas',
+  View.Email in 'view\View.Email.pas' {EmailView},
+  View.ConfiguracaoEmail in 'view\View.ConfiguracaoEmail.pas' {Form1};
+
+{$R *.res}
+
+begin
+   Application.Initialize;
+   Application.MainFormOnTaskbar := True;
+   Application.CreateForm(TClienteView, ClienteView);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
+

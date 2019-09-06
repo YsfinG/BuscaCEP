@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/09/01 03:57:47.000.456,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/01 04:19:37.000.968,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/01 05:25:20.000.358,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/01 05:26:34.000.886,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/01 05:34:04.000.259,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/01 11:41:55.000.231,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 21:25:25.000.919,=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 21:43:14.000.003,G:\BuscaCEP\View.Cliente.pas=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 21:43:14.000.003,G:\BuscaCEP\View.Cliente.dfm=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2019/09/04 21:43:36.000.728,G:\BuscaCEP\BuscaCEP.dproj=D:\Users\wcm-\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2019/09/04 21:43:52.000.253,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 21:53:28.000.103,G:\BuscaCEP\util\Util.Telephone.pas=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 21:53:57.000.082,G:\BuscaCEP\view\View.Cliente.dfm=G:\BuscaCEP\View.Cliente.dfm</Transaction>
+    <Transaction>2019/09/04 21:53:57.000.082,G:\BuscaCEP\view\View.Cliente.pas=G:\BuscaCEP\View.Cliente.pas</Transaction>
+    <Transaction>2019/09/04 22:50:12.000.816,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 22:50:45.000.634,G:\BuscaCEP\util\Util.ViaCEP.pas=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 23:21:41.000.091,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 23:21:57.000.328,G:\BuscaCEP\controller\Controller.Cliente.pas=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 23:44:45.000.629,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 23:44:53.000.192,G:\BuscaCEP\util\util.pas=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/04 23:45:10.000.196,G:\BuscaCEP\util\Util.XML.XML=G:\BuscaCEP\util\util.XML</Transaction>
+    <Transaction>2019/09/06 07:26:20.000.738,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/06 07:26:36.000.131,G:\BuscaCEP\Unit1.dfm=G:\BuscaCEP\view\View.Email.dfm</Transaction>
+    <Transaction>2019/09/06 07:26:36.000.131,G:\BuscaCEP\Unit1.pas=G:\BuscaCEP\view\View.Email.pas</Transaction>
+    <Transaction>2019/09/06 13:12:23.131,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/06 13:14:25.906,G:\BuscaCEP\view\View.ConfiguracaoEmail.pas=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/06 13:14:25.906,G:\BuscaCEP\view\View.ConfiguracaoEmail.dfm=G:\BuscaCEP\Unit1.dfm</Transaction>
+    <Transaction>2019/09/06 16:12:06.517,G:\BuscaCEP\view\View.ConfiguracaoEmail.pas=</Transaction>
+    <Transaction>2019/09/06 17:03:02.627,=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/06 17:03:12.870,G:\BuscaCEP\util\Util.Email.pas=G:\BuscaCEP\Unit1.pas</Transaction>
+    <Transaction>2019/09/06 17:17:42.355,G:\BuscaCEP\util\Util.Telefone.pas=G:\BuscaCEP\util\Util.Telephone.pas</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,116 @@
+unit View.Email;
+
+interface
+
+uses
+   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdMessage,
+   IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase, IdMessageClient,
+   IdSMTPBase, IdSMTP, IdBaseComponent, IdComponent, IdIOHandler,
+   IdIOHandlerSocket, IdIOHandlerStack, IdSSL, IdSSLOpenSSL, Vcl.StdCtrls,
+   Vcl.Buttons, Vcl.ExtCtrls, IdText, IdAttachmentFile;
+
+type
+   TEmailView = class(TForm)
+      edtRemetente: TLabeledEdit;
+      edtDestinatario: TLabeledEdit;
+      edtAssunto: TLabeledEdit;
+      memTextoEmail: TMemo;
+      Label1: TLabel;
+      pnlBar: TPanel;
+      btnEnviarEmail: TBitBtn;
+    edtPassword: TLabeledEdit;
+      procedure btnEnviarEmailClick(Sender: TObject);
+   private
+      function RetornaSMTP(pEmail: String): String;
+    { Private declarations }
+   public
+    { Public declarations }
+   end;
+
+var
+   EmailView: TEmailView;
+
+implementation
+
+{$R *.dfm}
+
+function TEmailView.RetornaSMTP(pEmail: String): String;
+begin
+   Result := 'smtp.'+ Copy(pEmail, Pos('@', pEmail) +1, Length(pEmail));
+end;
+
+procedure TEmailView.btnEnviarEmailClick(Sender: TObject);
+var
+   xIdText   : TIdText;
+   xIdSMTP   : TIdSMTP;
+   xIdMessage: TIdMessage;
+   xIdSSLIOHandlerSocketOpenSSL: TIdSSLIOHandlerSocketOpenSSL;
+begin
+   try
+      //CONFIGURAÇÃO SSL
+      xIdSSLIOHandlerSocketOpenSSL := TIdSSLIOHandlerSocketOpenSSL.Create(Nil);
+      xIdSSLIOHandlerSocketOpenSSL.SSLOptions.Method := sslvSSLv23;
+      xIdSSLIOHandlerSocketOpenSSL.SSLOptions.Mode   := sslmClient;
+
+      //CONFIGURAÇÃO DO SERVIDOR
+      xIdSMTP := TIdSMTP.Create(Nil);
+      xIdSMTP.IOHandler := xIdSSLIOHandlerSocketOpenSSL;
+      xIdSMTP.UseTLS    := utUseImplicitTLS;
+      xIdSMTP.AuthType  := satDefault;
+      xIdSMTP.Host      := RetornaSMTP(edtRemetente.Text);
+      xIdSMTP.Port      := 465;
+      xIdSMTP.Username  := edtRemetente.Text;
+      xIdSMTP.Password  := edtPassword.Text;
+
+      //CONFIGURANDO MENSAGEM
+      xIdMessage := TIdMessage.Create(Nil);
+      xIdMessage.CharSet      := 'utf-8';
+      xIdMessage.Encoding     := meMIME;
+      xIdMessage.Priority     := mpNormal;
+
+      //REMETENTE
+      xIdMessage.From.Name    := xIdSMTP.Username;
+      xIdMessage.From.Address := xIdSMTP.Username;
+
+      //ASSUNTO
+      xIdMessage.Subject      := edtAssunto.Text;
+
+      //DESTINATÁRIO
+      xIdMessage.Recipients.EMailAddresses := edtDestinatario.Text;
+
+      //CORPO DO E-MAIL
+      xIdText := TIdText.Create(xIdMessage.MessageParts);
+      xIdText.ContentType := 'text/html; text/plain; charset=iso-8859-1';
+      xIdText.Body.Add(memTextoEmail.Text);
+
+      //ANEXO
+      TIdAttachmentFile.Create(xIdMessage.MessageParts, 'XML.xml');
+
+      try
+         xIdSMTP.Connect;
+         xIdSMTP.Authenticate;
+         xIdSMTP.Send(xIdMessage);
+
+         MessageDlg('E-mail enviado com sucesso!', mtInformation, [mbOk], 0);
+         Close;
+      except
+         on E: Exception do
+            MessageDlg(E.Message, mtWarning, [mbOk], 0);
+      end;
+   finally
+      if xIdMessage <> Nil then
+         FreeAndNil(xIdMessage);
+
+      if xIdSMTP <> Nil then
+      begin
+         xIdSMTP.Disconnect;
+         FreeAndNil(xIdSMTP);
+      end;
+
+      UnLoadOpenSSLLibrary;
+   end;
+end;
+
+end.
+

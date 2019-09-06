@@ -1,0 +1,82 @@
+unit Util.Telephone;
+
+interface
+
+uses
+   Vcl.Mask;
+
+type
+   TMaskEdit = class(Vcl.Mask.TMaskEdit)
+   private
+      vTelephone: Boolean;
+   private
+      procedure TelephoneMask;
+      procedure GetTelephone(const Value: Boolean);
+      function SetTelephone: Boolean;
+   protected
+      procedure DoEnter; override;
+      procedure DoExit; override;
+   published
+      property Telephone: Boolean read SetTelephone write GetTelephone default False;
+   end;
+
+implementation
+
+//uses
+//   System.MaskUtils;
+
+{ TMaskEdit }
+
+procedure TMaskEdit.DoEnter;
+begin
+   inherited;
+
+end;
+
+procedure TMaskEdit.DoExit;
+begin
+   inherited;
+
+   if Telephone then
+      TelephoneMask;
+end;
+
+procedure TMaskEdit.GetTelephone(const Value: Boolean);
+begin
+   vTelephone := Value;
+end;
+
+function TMaskEdit.SetTelephone: Boolean;
+begin
+   Result := vTelephone;
+end;
+
+procedure TMaskEdit.TelephoneMask;
+var
+   xText: String;
+begin
+   xText := Self.EditText;
+
+   if Length(xText) > 10 then
+   begin
+      Self.EditMask := '';
+      Self.EditMask := '(99) 99999-9999';
+      Self.EditText := xText;
+   end;
+//   else if Length(xText) = 10 then
+//   begin
+//      xText := FormatMaskText('\(99\) 9999\-9999;0;', xText);
+//      TIBStringField(TDBEdit(Sender).DataSource.DataSet.FieldByName(TDBEdit(Sender).Field.FieldName)).EditMask := '';
+//      TIBStringField(TDBEdit(Sender).DataSource.DataSet.FieldByName(TDBEdit(Sender).Field.FieldName)).EditMask := '(99) 9999-9999';
+//      TIBDataSet(TDBEdit(Sender).DataSource.DataSet).FieldByName(TDBEdit(Sender).Field.FieldName).AsString := xText;
+//   end
+//   else
+//   begin
+//      xText := FormatMaskText('\(99\) 9999\-99999;0;', xText);
+//      TIBStringField(TDBEdit(Sender).DataSource.DataSet.FieldByName(TDBEdit(Sender).Field.FieldName)).EditMask := '';
+//      TIBStringField(TDBEdit(Sender).DataSource.DataSet.FieldByName(TDBEdit(Sender).Field.FieldName)).EditMask := '(99) 9999-99999';
+//      TIBDataSet(TDBEdit(Sender).DataSource.DataSet).FieldByName(TDBEdit(Sender).Field.FieldName).AsString := xText;
+//   end;
+end;
+
+end.
